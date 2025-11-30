@@ -1,4 +1,5 @@
 from day6 import parse_input, Dir, Pos
+import pytest
 
 test_input = """
 ....#.....
@@ -70,11 +71,12 @@ def test_positions_that_cause_loops():
     count = sum(1 for _ in lab_map.positions_that_cause_loops())
     assert count == 6
 
+@pytest.mark.slow
 def test_real_positions_that_cause_loops():
     lab_map = parse_input(real_input)
-    # takes ~18s on my computer, doable, but annoying
-    # count = sum(1 for _ in lab_map.positions_that_cause_loops())
-    # assert count == 1939
+    # takes ~18s on my computer
+    count = sum(1 for _ in lab_map.positions_that_cause_loops())
+    assert count == 1939
 
     
 real_input = """
