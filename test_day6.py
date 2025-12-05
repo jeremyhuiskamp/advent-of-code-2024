@@ -49,7 +49,7 @@ def test_turn():
     for _ in range(7):
         lab_map.move_guard()
     assert (4, 1) in lab_map.visited
-    assert not (4, 0) in lab_map.visited
+    assert (4, 0) not in lab_map.visited
     assert (5, 1) in lab_map.visited
 
 def test_move_guard_until_off():

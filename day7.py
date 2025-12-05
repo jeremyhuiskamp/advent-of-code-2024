@@ -1,5 +1,6 @@
 import operator
 import re
+from util import mapl
 
 def cat(n1, n2):
     return int(str(n1)+str(n2))
@@ -11,7 +12,7 @@ type Equation = tuple[int, list[int]]
 
 def gen_permutations(vals, ops=basic_ops, total=None):
     if not vals:
-        if not total is None:
+        if total is not None:
             yield total
         return
     val, *rest = vals
@@ -26,11 +27,11 @@ def equation_can_work(outp, inp, ops=basic_ops):
 
 def parse_input(inp) -> list[Equation]:
     splitter = re.compile(r":?\s+")
-    def parse_line(l) -> Equation:
-        parts_str = splitter.split(l)
+    def parse(line) -> Equation:
+        parts_str = splitter.split(line)
         parts = list(map(int, parts_str))
         return parts[0], parts[1:]
-    return [parse_line(l) for l in inp.splitlines()]
+    return mapl(parse, inp.splitlines())
 
 def total_calibration(equations: list[Equation], ops=basic_ops):
     return sum(e[0] for e in equations if equation_can_work(*e, ops=ops))

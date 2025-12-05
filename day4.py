@@ -45,7 +45,7 @@ def count_all_occurrences(strings, small):
     return total
 
 def parse_input(input):
-    return [l for l in input.splitlines() if l]
+    return input.strip().splitlines()
 
 def find_A_locs(strings):
     for row in range(1, len(strings)-1):

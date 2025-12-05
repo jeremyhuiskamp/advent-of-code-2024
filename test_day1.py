@@ -7,7 +7,7 @@ test_input = """
 1   3
 3   9
 3   3
-"""
+""".strip()
 
 def test_parse_input():
     left, right = day1.parse_input(test_input)
@@ -1036,4 +1036,4 @@ real_input = """
 19771   50847
 30506   24755
 32174   68086
-"""
+""".strip()

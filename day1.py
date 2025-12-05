@@ -1,7 +1,7 @@
 
 def parse_input(input):
     left, right = [], []
-    for line in filter(lambda l: l, input.splitlines()):
+    for line in input.splitlines():
         l, r = line.split()
         left.append(int(l))
         right.append(int(r))

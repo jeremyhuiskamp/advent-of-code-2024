@@ -2,17 +2,27 @@
 
 set -euo pipefail
 
+__lint() {
+  echo ruff:
+  uv run ruff check
+}
+
 __typecheck() {
   # ty is faster, so have it fail first
-  echo ty
+  echo ty:
   uv run ty check
-  echo mypy
+  echo mypy:
   uv run mypy .
 }
 
 __test() {
+  __lint
   __typecheck
   uv run pytest "$@"
+}
+
+__test-watch() {
+  fd | entr -s './go test'
 }
 
 __repl() {
