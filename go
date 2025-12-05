@@ -29,6 +29,11 @@ __repl() {
   uv run python "$@"
 }
 
+__edit() {
+  local day="$1"
+  nvim -O {,test_}day"$day".py
+}
+
 CMD=${1:-}
 shift || true
 if [[ $(type -t "__${CMD}") == function ]]; then
