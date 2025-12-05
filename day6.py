@@ -1,6 +1,7 @@
 from enum import IntEnum
 from collections import defaultdict
 
+
 class Dir(IntEnum):
     Up = 0
     Right = 1
@@ -8,31 +9,36 @@ class Dir(IntEnum):
     Left = 3
 
     def turn_right(self):
-        return Dir((self+1) % 4)
+        return Dir((self + 1) % 4)
 
     def move_from(self, pos):
         match self:
             case Dir.Up:
-                return Pos(pos.x, pos.y-1)
+                return Pos(pos.x, pos.y - 1)
             case Dir.Right:
-                return Pos(pos.x+1, pos.y)
+                return Pos(pos.x + 1, pos.y)
             case Dir.Down:
-                return Pos(pos.x, pos.y+1)
+                return Pos(pos.x, pos.y + 1)
             case Dir.Left:
-                return Pos(pos.x-1, pos.y)
+                return Pos(pos.x - 1, pos.y)
 
     def to_char(self):
-        return {Dir.Up: '^',
-                Dir.Right: '>',
-                Dir.Down: 'v',
-                Dir.Left: '<'}[self]
+        return {
+            Dir.Up: "^",
+            Dir.Right: ">",
+            Dir.Down: "v",
+            Dir.Left: "<",
+        }[self]
 
     @staticmethod
     def of_char(c):
-        return {'^': Dir.Up,
-                '>': Dir.Right,
-                'v': Dir.Down,
-                '<': Dir.Left}[c]
+        return {
+            "^": Dir.Up,
+            ">": Dir.Right,
+            "v": Dir.Down,
+            "<": Dir.Left,
+        }[c]
+
 
 class Pos(tuple):
     def __new__(self, x, y):
@@ -47,8 +53,7 @@ class Pos(tuple):
         return self[1]
 
     def within(self, lab_map):
-        return (0 <= self.x < lab_map.cols and
-                0 <= self.y < lab_map.rows)
+        return 0 <= self.x < lab_map.cols and 0 <= self.y < lab_map.rows
 
 
 class LabMap:
@@ -132,8 +137,10 @@ class LabMap:
             if pos in self.visited:
                 return "x"
             return "."
+
         def row(r):
             return "".join(char_at((c, r)) for c in range(self.cols))
+
         return "\n".join(row(r) for r in range(self.rows))
 
 

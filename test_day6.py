@@ -14,6 +14,7 @@ test_input = """
 ......#...
 """
 
+
 def test_parse_input():
     lab_map = parse_input(test_input)
     assert lab_map.guard_pos == Pos(4, 6)
@@ -21,21 +22,23 @@ def test_parse_input():
     assert lab_map.rows == 10
     assert lab_map.cols == 10
     assert lab_map.obstructions == {
-            (0, 8),
-            (1, 6),
-            (2, 3),
-            (4, 0),
-            (6, 9),
-            (7, 4),
-            (8, 7),
-            (9, 1),
-        }
+        (0, 8),
+        (1, 6),
+        (2, 3),
+        (4, 0),
+        (6, 9),
+        (7, 4),
+        (8, 7),
+        (9, 1),
+    }
 
     assert lab_map.count_visited() == 1
+
 
 def test_str():
     lab_map = parse_input(test_input)
     assert str(lab_map) == test_input.strip()
+
 
 def test_move_once():
     lab_map = parse_input(test_input)
@@ -43,6 +46,7 @@ def test_move_once():
     lab_map.move_guard()
     assert lab_map.guard_on_map()
     assert lab_map.count_visited() == 2
+
 
 def test_turn():
     lab_map = parse_input(test_input)
@@ -52,12 +56,14 @@ def test_turn():
     assert (4, 0) not in lab_map.visited
     assert (5, 1) in lab_map.visited
 
+
 def test_move_guard_until_off():
     lab_map = parse_input(test_input)
     lab_map.move_guard_while_possible()
     assert lab_map.count_visited() == 41
     assert not lab_map.guard_in_loop()
     assert not lab_map.guard_on_map()
+
 
 def test_real_move_guard_until_off():
     lab_map = parse_input(real_input)
@@ -66,10 +72,12 @@ def test_real_move_guard_until_off():
     assert not lab_map.guard_in_loop()
     assert not lab_map.guard_on_map()
 
+
 def test_positions_that_cause_loops():
     lab_map = parse_input(test_input)
     count = sum(1 for _ in lab_map.positions_that_cause_loops())
     assert count == 6
+
 
 @pytest.mark.slow
 def test_real_positions_that_cause_loops():
@@ -78,7 +86,7 @@ def test_real_positions_that_cause_loops():
     count = sum(1 for _ in lab_map.positions_that_cause_loops())
     assert count == 1939
 
-    
+
 real_input = """
 ..#.....##......#............#..................................#.....#..............#................#.........................#.
 ..........................................................................................................#..........#...#.......#

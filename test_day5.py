@@ -31,8 +31,10 @@ test_input = """
 97,13,75,29,47
 """.strip()
 
+
 def test_parse_input():
     order, pages = day5.parse_input(test_input)
+
 
 def test_all_order_ok():
     order, pages = day5.parse_input(test_input)
@@ -43,25 +45,31 @@ def test_all_order_ok():
     assert not day5.all_order_ok(order, pages[4])
     assert not day5.all_order_ok(order, pages[5])
 
+
 def test_sum_of_middles_of_oks():
     order, pages = day5.parse_input(test_input)
     assert day5.sum_of_middles_of_oks(order, pages) == 143
+
 
 def test_real_sum_of_middles_of_oks():
     order, pages = day5.parse_input(real_input)
     assert day5.sum_of_middles_of_oks(order, pages) == 4135
 
+
 def test_fix_order():
     order, _ = day5.parse_input(real_input)
     assert day5.fix_order(order, [75, 97, 47, 61, 53]) == [75, 97, 47, 61, 53]
+
 
 def test_sum_of_middles_of_fixeds():
     order, pages = day5.parse_input(test_input)
     assert day5.sum_of_middles_of_fixeds(order, pages) == 123
 
+
 def test_real_sum_of_middles_of_fixeds():
     order, pages = day5.parse_input(real_input)
     assert day5.sum_of_middles_of_fixeds(order, pages) == 5285
+
 
 real_input = """
 88|12

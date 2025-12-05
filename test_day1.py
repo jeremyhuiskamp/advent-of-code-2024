@@ -9,25 +9,30 @@ test_input = """
 3   3
 """.strip()
 
+
 def test_parse_input():
     left, right = day1.parse_input(test_input)
     assert left == [3, 4, 2, 1, 3, 3]
     assert right == [4, 3, 5, 3, 9, 3]
+
 
 def test_distances():
     left, right = day1.parse_input(test_input)
     distance = day1.distance(left, right)
     assert distance == 11
 
+
 def test_distances_real():
     left, right = day1.parse_input(real_input)
     distance = day1.distance(left, right)
     assert 2815556 == distance
 
+
 def test_similarity_score():
     left, right = day1.parse_input(test_input)
     score = day1.similarity_score(left, right)
     assert score == 31
+
 
 def test_real_similarity_score():
     left, right = day1.parse_input(real_input)

@@ -1,9 +1,11 @@
 import day2
 
+
 def test_safe():
     assert day2.is_safe([7, 6, 4, 2, 1])
     assert not day2.is_safe([1, 2, 7, 8, 9])
     assert not day2.is_safe([9, 7, 6, 2, 1])
+
 
 test_input = """
 7 6 4 2 1
@@ -14,17 +16,21 @@ test_input = """
 1 3 6 7 9
 """
 
+
 def test_count_safe():
     reports = day2.parse_input(test_input)
     assert 2 == day2.count_safe(reports)
+
 
 def test_real_count_safe():
     reports = day2.parse_input(real_input)
     assert 479 == day2.count_safe(reports)
 
+
 def test_count_safe_with_dampener():
     reports = day2.parse_input(test_input)
     assert 4 == day2.count_safe(reports, day2.is_safe_with_dampener)
+
 
 def test_real_count_safe_with_dampener():
     reports = day2.parse_input(real_input)

@@ -1,13 +1,17 @@
 import day4
 
+
 def test_transpose():
     assert day4.transpose(["ab", "cd"]) == ["ac", "bd"]
+
 
 def test_diagonals():
     assert day4.diagonals(["ab", "cd"]) == ["c", "ad", "b"]
 
+
 def test_count_occurrences():
     assert day4.count_occurrences(".XMAS.XMAS.", "XMAS") == 2
+
 
 test_input = """
 MMMSXXMASM
@@ -22,17 +26,21 @@ MAMMMXMMMM
 MXMXAXMASX
 """
 
+
 def test_count_all_occurrences():
     strings = day4.parse_input(test_input)
     assert day4.count_all_occurrences(strings, "XMAS") == 18
+
 
 def test_real_count_all_occurrences():
     strings = day4.parse_input(real_input)
     assert day4.count_all_occurrences(strings, "XMAS") == 2344
 
+
 def test_count_X_MAS():
     strings = day4.parse_input(test_input)
     assert day4.count_X_MAS(strings) == 9
+
 
 def test_real_count_X_MAS():
     strings = day4.parse_input(real_input)

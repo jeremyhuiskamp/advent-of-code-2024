@@ -13,28 +13,34 @@ test_input = """
 292: 11 6 16 20
 """.strip()
 
+
 def test_gen_permutations():
     assert set(day7.gen_permutations([10, 19])) == {29, 190}
     assert set(day7.gen_permutations([])) == set()
     assert 3267 in set(day7.gen_permutations([81, 40, 27]))
+
 
 def test_calibration_equation():
     assert day7.equation_can_work(190, [10, 19])
     assert day7.equation_can_work(3267, [81, 40, 27])
     assert not day7.equation_can_work(83, [17, 5])
 
+
 def test_total_calibration():
     equations = day7.parse_input(test_input)
     assert day7.total_calibration(equations) == 3749
+
 
 def test_real_total_calibration():
     equations = day7.parse_input(real_input)
     assert day7.total_calibration(equations) == 3245122495150
 
+
 def test_gen_permutations_w_cat():
     assert set(day7.gen_permutations([10, 19], day7.all_ops)) == {29, 190, 1019}
     assert set(day7.gen_permutations([], day7.all_ops)) == set()
     assert 3267 in set(day7.gen_permutations([81, 40, 27], day7.all_ops))
+
 
 def test_calibration_equation_w_cat():
     assert day7.equation_can_work(190, [10, 19], day7.all_ops)
@@ -42,14 +48,17 @@ def test_calibration_equation_w_cat():
     assert not day7.equation_can_work(83, [17, 5], day7.all_ops)
     assert day7.equation_can_work(7290, [6, 8, 6, 15], day7.all_ops)
 
+
 def test_total_calibration_w_cat():
     equations = day7.parse_input(test_input)
     assert day7.total_calibration(equations, day7.all_ops) == 11387
+
 
 @pytest.mark.slow
 def test_real_total_calibration_w_cat():
     equations = day7.parse_input(real_input)
     assert day7.total_calibration(equations, day7.all_ops) == 105517128211543
+
 
 real_input = """
 18158404487: 2 3 15 7 4 72 2 61 4 6 7 4
