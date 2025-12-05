@@ -47,7 +47,7 @@ def test_total_calibration_w_cat():
     assert day7.total_calibration(equations, day7.all_ops) == 11387
 
 @pytest.mark.slow
-def test_real_total_calibration():
+def test_real_total_calibration_w_cat():
     equations = day7.parse_input(real_input)
     assert day7.total_calibration(equations, day7.all_ops) == 105517128211543
 

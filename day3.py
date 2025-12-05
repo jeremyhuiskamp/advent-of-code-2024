@@ -3,7 +3,7 @@ import re
 mul_call = re.compile("mul\\(([0-9]{,3}),([0-9]{,3})\\)")
 do_dont = re.compile("(do|don't)\\(\\)")
 
-def parse_input(input) -> list[(int,int)]:
+def parse_input(input) -> list[tuple[int,int]]:
     return [(int(m[0]), int(m[1])) for m in mul_call.findall(input)]
 
 def enabled_input(input):

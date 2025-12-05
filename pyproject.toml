@@ -9,3 +9,9 @@ dependencies = [
 
 [tool.pytest]
 markers = ["slow: skip slow tests"]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.0",
+    "ty>=0.0.1a31",
+]

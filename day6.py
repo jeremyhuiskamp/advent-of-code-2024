@@ -46,9 +46,6 @@ class Pos(tuple):
     def y(self):
         return self[1]
 
-    def move(self, dir):
-        return Pos(dir.move_from(self))
-
     def within(self, lab_map):
         return (0 <= self.x < lab_map.cols and
                 0 <= self.y < lab_map.rows)
@@ -59,8 +56,8 @@ class LabMap:
         self.rows = 0
         self.cols = 0
         self.obstructions = set()
-        self.guard_pos = None
-        self.guard_dir = None
+        self.guard_pos = Pos(-1, -1)
+        self.guard_dir = Dir.Up
         self.visited = set()
         # (guard_pos, guard_dir) -> times visisted
         self.visited_with_dir = defaultdict(lambda: 0)
