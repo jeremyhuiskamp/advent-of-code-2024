@@ -22,7 +22,7 @@ __test() {
 }
 
 __test-watch() {
-  fd | entr -s './go test'
+  fd | entr -s './go test --durations=0'
 }
 
 __repl() {
